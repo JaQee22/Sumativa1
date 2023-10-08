@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Calculadora Simple</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="{% static 'css/calculadora.css' %}" rel="stylesheet">
+</head>
+<body>
+    {% csrf_token %}
+    <div class="container">
+        <h1>Calcu La Dora</h1>
+
+        <form id="calculator" class="form-group">
+            <input type="number" id="operand1" class="form-control mb-2" placeholder="Operador 1">
+            
+            <label><input type="radio" name="operator" value="add">+</label>
+            <label><input type="radio" name="operator" value="subtract">-</label>
+            <label><input type="radio" name="operator" value="multiply">*</label>
+            <label><input type="radio" name="operator" value="divide">/</label>
+
+            <input type="number" id="operand2" class="form-control mb-2" placeholder="Operador 2">
+            
+            <button type="button" class="btn btn-primary btn-block" onclick="calculate()">Calcular</button>
+        </form>
+
+        <p class="text-center mt-3">Resultado: <span id="result"></span></p>
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function calculate() {
+            const operand1 = parseFloat(document.getElementById('operand1').value);
+            const operand2 = parseFloat(document.getElementById('operand2').value);
+            const operator = document.querySelector('input[name="operator"]:checked');
+            const resultElement = document.getElementById('result');
+
+            if (operand1 && operand2 && operator) {
+                const operatorValue = operator.value;
+                let result;
+
+                switch (operatorValue) {
+                    case 'add':
+                        result = operand1 + operand2;
+                        break;
+                    case 'subtract':
+                        result = operand1 - operand2;
+                        break;
+                    case 'multiply':
+                        result = operand1 * operand2;
+                        break;
+                    case 'divide':
+                        if (operand2 !== 0) {
+                            result = operand1 / operand2;
+                        } else {
+                            result = "No se puede dividir por 0";
+                        }
+                        break;
+                    default:
+                        result = "Operador no válido";
+                        break;
+                }
+
+                resultElement.textContent = result;
+            } else {
+                resultElement.textContent = "Por favor, complete los campos y seleccione un operador.";
+            }
+        }
+    </script>
+</body>
+</html>

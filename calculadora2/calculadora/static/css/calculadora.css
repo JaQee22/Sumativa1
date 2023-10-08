@@ -1,0 +1,54 @@
+/* Personalización de la calculadora */
+*{
+    margin: 30px;
+}
+.body {
+    background-color: #f8f9fa; 
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #ff03bc49; /* Color de fondo del contenedor */
+    padding: 2px;
+    border-radius: 40px;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.1); 
+}
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #ff00bb; 
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+.form-control {
+    border-color: #0570da; 
+}
+
+.btn-primary {
+    background-color: #ff00bb; 
+    border-color: #ef66ab; 
+    color: #fff; 
+}
+
+.btn-primary:hover {
+    background-color: #f920a95a; 
+    border-color: #98c6f7; 
+}
+
+.text-primary {
+    color: #f575d5; 
+}
+
+/* Estilos para el resultado */
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b32efac5; 
+}
+
+#result.error {
+    color: #dc3545; 
+}
